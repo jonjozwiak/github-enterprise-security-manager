@@ -51,10 +51,8 @@ orgs=$(gh api graphql -f query='
 ' -f enterprise=octodemo --paginate  | jq -r '.data.enterprise.organizations.nodes[].login')
 
 # For each organization, add a team called "security-managers"
-#for org in $orgs
-#do
-### TODO - REMOVE HARD CODING... 
-org=TestingSecurityManager
+for org in $orgs
+do
     echo "** Organization: $org"
 
     # Check if the user can administer the organization (verify org admin rights)
@@ -134,4 +132,4 @@ org=TestingSecurityManager
 
         echo ""
     fi
-#done
+done
